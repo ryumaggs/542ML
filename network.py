@@ -14,18 +14,18 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 #get training data here
 num_imputs = 13
-def base_model():
+def shallow(num_inputs,hidden_size):
 	model = Sequential()
-	model.add(Dense(num_inputs, input_dim=num_inputs, kernel_initializer='normal', activation='relu'))
-	model.add(Dense(1, kernel_initializer='normal'))
+	model.add(Dense(hidden_size, input_dim=num_inputs, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(1, kernel_initializer='normal',activation='relu'))
 	# Compile model
 	model.compile(loss='mean_squared_error', optimizer='adam')
 	return model
 
-def deep_model():
+def deep(num_inputs,hidden_layers):
 	model = Sequential()
-	model.add(Dense(num_inputs,input_dim=num_nputs,kernel_initializer='normal',activation='relu'))
-	model.add(Dense(6,kernel_initializer='normal',activation='relu'))
+	model.add(Dense(hidden_layers[0],input_dim=num_nputs,kernel_initializer='normal',activation='relu'))
+	model.add(Dense(hidden_layers[1],kernel_initializer='normal',activation='relu'))
 	model.add(Dense(1,kernel_initializer='normal',activation='relu'))
 	#compile
 	model.compile(loss='mean_squared_error',optimizer='adam')
